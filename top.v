@@ -3,9 +3,10 @@ module top(
     input wire RST_BTN,         // reset button
     output wire VGA_HS_O,       // horizontal sync output
     output wire VGA_VS_O,       // vertical sync output
-    output wire [3:0] VGA_R,    // 4-bit VGA red output
-    output wire [3:0] VGA_G,    // 4-bit VGA green output
-    output wire [3:0] VGA_B     // 4-bit VGA blue output
+    output wire PXCLK,          //pixclock
+    output wire [4:0] VGA_R,    // 4-bit VGA red output
+    output wire [5:0] VGA_G,    // 4-bit VGA green output
+    output wire [4:0] VGA_B     // 4-bit VGA blue output
     );
 
     wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
@@ -15,12 +16,13 @@ module top(
     reg [15:0] cnt;
     reg pix_stb;
     always @(posedge CLK)
-        {pix_stb, cnt} <= cnt + 16'h4000;  // divide by 4: (2^16)/4 = 0x4000
+        {pix_stb, cnt} <= cnt + 16'h5555;  // divide by 4: (2^16)/4 = 0x4000
 
-    wire [9:0] x;  // current pixel x position: 10-bit value: 0-1023
+    wire [11:0] x;  // current pixel x position: 10-bit value: 0-1023
     wire [8:0] y;  // current pixel y position:  9-bit value: 0-511
-
-    vga640x480 display (
+    
+    
+    vga800x480 display (
         .i_clk(CLK),
         .i_pix_stb(pix_stb),
         .i_rst(rst),
