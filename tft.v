@@ -11,7 +11,7 @@ module vga800x480(
     output wire o_de,    	   // high during active pixel drawing
     output wire o_screenend,    // high for one tick at the end of screen
     output wire o_animate,      // high for one tick at end of active drawing
-    output wire [9:0] o_x,      // current pixel x position
+    output wire [10:0] o_x,      // current pixel x position
     output wire [8:0] o_y       // current pixel y position
     );
 
