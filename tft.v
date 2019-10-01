@@ -17,12 +17,12 @@ module vga800x480(
 
     // VGA timings https://timetoexplore.net/blog/video-timings-vga-720p-1080p
     localparam HS_STA = 210;              // horizontal sync start
-    localparam HS_END = 210 + 96;         // horizontal sync end
-    localparam HA_STA = 210 + 46 + 1;    // horizontal active pixel start
+    localparam HS_END = 210 + 20 ;         // horizontal sync end
+    localparam HA_STA = 210 + 20+ 46;    // horizontal active pixel start
     localparam VS_STA = 480 + 22;        // vertical sync start
-    localparam VS_END = 480 + 22 + 2;    // vertical sync end
+    localparam VS_END = 480 + 22 + 23;    // vertical sync end
     localparam VA_END = 480;             // vertical active pixel end
-    localparam LINE   = 1056;             // complete line (pixels)
+    localparam LINE   = 1076;             // complete line (pixels)
     localparam SCREEN = 525;             // complete screen (lines)
 
     reg [9:0] h_count;  // line position
