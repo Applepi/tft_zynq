@@ -25,7 +25,7 @@ module vga800x480(
     localparam LINE   = 1076;             // complete line (pixels)
     localparam SCREEN = 525;             // complete screen (lines)
 
-    reg [9:0] h_count;  // line position
+    reg [11:0] h_count;  // line position
     reg [9:0] v_count;  // screen position
 
     // generate sync signals (active low for 800x480)
